@@ -1,4 +1,59 @@
-# Guia de Instalação: Zabbix e Grafana no Ubuntu Server
+# Guia de Instalação: Zabbix e Grafana e Ubuntu Server
+
+## Iniciar VMware com iso  Ubuntu Server 24.04 LTS
+
+![Screenshot_1](https://github.com/user-attachments/assets/da1ee768-62bd-46dc-93df-8a00ae8d8282)
+
+
+Seguir a Instalação inicial do Ubuntu server conforme as imagem abaixo :
+
+
+![Screenshot_2](https://github.com/user-attachments/assets/3102621a-dcb8-42bb-83b0-4444c63c9f9d)
+
+Concluído
+![Screenshot_3](https://github.com/user-attachments/assets/f054e877-f2bd-4228-8e6d-439bb87d4702)
+
+Concluído
+
+Aqui deve configurar manualmente o ip do servidor ou DHCP liberar algum ip disponível. Deve optar conforme indicado pelo supervisor da TI.
+![Screenshot_4](https://github.com/user-attachments/assets/5ab7c62c-dd34-451c-84cc-8dc1c99d1c89)
+
+
+Segue a instalaçao conforme as imagem abaixo
+Deve aguardar a conclusão dos teste de conexão de mirror antes de avançar
+
+![Screenshot_5](https://github.com/user-attachments/assets/0cba6a2d-abb7-40e6-af45-bf14815df7cc)
+
+
+Se não precisar fazer partiçoes de disco pode avançar para proxima etapa.
+
+![Screenshot_6](https://github.com/user-attachments/assets/7b0711df-b001-440c-a87d-c90978c5c989)
+
+Concluído
+
+Configure essa etapa conforme a imagem abaixo e a senha deve ser a padrão do usuário `user`, que foi utilizada na criação de todos os usuários ou configure conforme indicado pelo supervisor da TI.
+![Screenshot_7](https://github.com/user-attachments/assets/d4ec0ec9-fde1-45f3-a7ee-c0bbcb693b0f)
+
+Concluído
+![Screenshot_8](https://github.com/user-attachments/assets/8245ee66-601c-49a5-904c-47b14ffbbb28)
+
+Concluído
+![Screenshot_9](https://github.com/user-attachments/assets/b58d9d10-8bd0-4d6c-b73a-363493427a63)
+
+Concluído
+
+Não é necessário habilitar nada nessa etapa e avance próxima etapa
+
+![Screenshot_10](https://github.com/user-attachments/assets/fc7390a1-33ca-49a8-9272-ba984680fee0)
+
+Aguarde a instalação e dê Reboot Now
+![Screenshot_11](https://github.com/user-attachments/assets/b7fed966-dde2-4d6d-8fa1-0804be9f0bd3)
+
+Ignore o erro abaixo e tecle ENTER.
+
+
+![Screenshot_12](https://github.com/user-attachments/assets/af380b18-0d5a-4387-9df6-62179d68eb46)
+
 
 ## ⚠️ Importante
 
@@ -196,6 +251,9 @@ Username: Admin
 Password: zabbix
 ```
 
+Não esqueça de alterar a senha do Admin para a senha do Administrador que foi utilizada na criação de todos os usuários, conforme indicado pelo supervisor da TI.
+
+
 ## Finalizado!
 
 Agora seu Zabbix está instalado e pronto para ser configurado! 🚀
@@ -240,19 +298,20 @@ curl -fsSL https://packages.grafana.com/gpg.key | sudo gpg --dearmor -o /etc/apt
 - **`gpg --dearmor`**: Converte a chave para um formato compatível com o APT.
 - **`-o /etc/apt/trusted.gpg.d/grafana.gpg`**: Armazena a chave no local correto.
 
-![Screenshot_31](https://github.com/user-attachments/assets/2d95fe6e-5dd2-4db0-9e83-3a70cbbe4abc)
-
-  
-![Screenshot_32](https://github.com/user-attachments/assets/64f2de2c-7658-4a95-8150-b294a29e87b8)
-
-
 ### Adicionar repositório do Grafana ao sistema:
 
 ```bash
 add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
 ```
 
+
 - Esse comando adiciona o repositório do Grafana à lista de fontes do APT.
+
+
+![Screenshot_31](https://github.com/user-attachments/assets/2d95fe6e-5dd2-4db0-9e83-3a70cbbe4abc)
+
+  
+
 
 **Se o comando `add-apt-repository` não funcionar**, verifique se o pacote `software-properties-common` está instalado.
 
@@ -269,6 +328,7 @@ apt -y install grafana
 
 - **`apt update`**: Atualiza a lista de pacotes disponíveis.
 - **`apt -y install grafana`**: Instala o Grafana automaticamente, sem perguntar confirmação.
+![Screenshot_32](https://github.com/user-attachments/assets/64f2de2c-7658-4a95-8150-b294a29e87b8)
 
 ---
 
@@ -293,6 +353,8 @@ Se você deseja usar o **Zabbix no Grafana**, instale o plugin oficial:
 grafana-cli plugins install alexanderzobnin-zabbix-app
 ```
 
+![Screenshot_34](https://github.com/user-attachments/assets/2e105e02-2782-4189-beb7-409d32bad08e)
+
 - **`grafana-cli plugins install [plugin]`**: Instala um plugin específico no Grafana.
 
 Agora, reinicie o serviço do Grafana para carregar o plugin:
@@ -315,6 +377,8 @@ Agora você pode acessar o painel do Grafana pelo navegador, usando o IP do serv
 http://SEU_IP:3000
 ```
 
+![image](https://github.com/user-attachments/assets/75de9e18-97c0-4239-9cfc-f329e2d89ff6)
+
 **Credenciais padrão:**
 
 ```
@@ -322,13 +386,45 @@ Username: admin
 Password: admin
 ```
 
-Após o primeiro login, o sistema pedirá que você altere a senha.
+
+Após o primeiro login, o sistema pedirá que você altere a senha para senha de administrador que foi utilizada na criação de todos os usuários, conforme indicado pelo supervisor da TI.
+
+
+![Screenshot_33](https://github.com/user-attachments/assets/5fc5e7fb-27f4-4dfa-a294-53db00bfd82a)
 
 ---
+
+
+
+### Para habilitar plugin do zabbix no grafana segue a imagens abaixo 
+
+
+![Screenshot_35](https://github.com/user-attachments/assets/2b215117-160c-4ce5-b675-e280cce7a499)
+
+![Screenshot_36](https://github.com/user-attachments/assets/fcb16016-7167-4ce9-8e1e-6e1aa4fe1d6e)
+
+![Screenshot_37](https://github.com/user-attachments/assets/d6732761-7a35-4b3f-af0f-eba57b09e650)
+
+![Screenshot_40](https://github.com/user-attachments/assets/98a77b73-4ad8-4cd3-8fdf-47f15132ff5b)
+
+### Após dar enable na pluglin do zabbix, deve adicionar do Data sources de acordo com a imagem abaixo
+
+![Screenshot_41](https://github.com/user-attachments/assets/60c40cc4-f495-4f7d-bdf2-db27781a3b07)
+
+![Screenshot_42](https://github.com/user-attachments/assets/5149f12d-1cd5-4f4f-847c-35e3920ef4e5)
+
+
+Na opção Connection coloque na URL ```http://localhost/zabbix/api_jsonrpc.php```
+![Screenshot_43](https://github.com/user-attachments/assets/386c5314-8d6c-440d-8650-3ec228b44a8f)
+
+![Screenshot_44](https://github.com/user-attachments/assets/330df0d0-fc5c-47e0-bcf6-cfd9a68aa1fc)
+
+![Screenshot_45](https://github.com/user-attachments/assets/2a7e9da3-61dc-4ed0-8316-01b7a697c122)
 
 ## Finalizado!
 
 Agora seu Grafana está instalado e pronto para uso! 🚀
+
 
 
 
