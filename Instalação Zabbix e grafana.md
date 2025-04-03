@@ -30,6 +30,13 @@ apt install mysql-server -y
 
 ---
 
+
+![Screenshot_13](https://github.com/user-attachments/assets/b7b6ab12-078f-4ac2-a41c-c96276aacc95) 
+
+![Screenshot_14](https://github.com/user-attachments/assets/0e12f934-7dbb-45ca-bb14-a9bcc2722b6a)
+
+![Screenshot_15](https://github.com/user-attachments/assets/ae1f46be-5dde-42e1-b857-2cbb836e95f4)
+
 ## 3. Instalar Repositório Zabbix
 
 Baixe e instale o repositório do Zabbix:
@@ -42,6 +49,9 @@ apt update
 ```
 
 ---
+![Screenshot_16](https://github.com/user-attachments/assets/56c663dc-da70-4466-900e-c0714029672d)
+
+![Screenshot_17](https://github.com/user-attachments/assets/5ede79b5-a21d-46ca-af5d-471651d457da)
 
 ## 4. Instalar Servidor Zabbix, Frontend e Agente
 
@@ -52,7 +62,7 @@ apt install zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-sq
 ```
 
 ---
-
+![Screenshot_18](https://github.com/user-attachments/assets/f8657614-0449-434d-ab6e-ec5cbd025dd1)
 ## 5. Criar Database no MySQL
 
 Acesse o MySQL como root:
@@ -60,6 +70,8 @@ Acesse o MySQL como root:
 ```bash
 mysql -uroot -p
 ```
+![Screenshot_19](https://github.com/user-attachments/assets/1abd5423-be33-4471-a6c4-e1aa2598d3ba)
+
 
 **Importante:** Utilize a senha padrão do usuário `user`, que foi utilizada na criação de todos os usuários, conforme indicado pelo supervisor da TI.
 
@@ -74,6 +86,7 @@ quit;
 ```
 
 ---
+![Screenshot_20](https://github.com/user-attachments/assets/58691d78-b270-4363-9450-626ab8a35264)
 
 ## 6. Importar Esquema e Dados Iniciais
 
@@ -84,6 +97,10 @@ zcat /usr/share/zabbix/sql-scripts/mysql/server.sql.gz | mysql --default-charact
 ```
 
 Após inserir a senha corretamente, o processo ocorrerá em segundo plano.
+
+Aguarde!
+
+![Screenshot_22](https://github.com/user-attachments/assets/8103f4ad-a71d-447e-8cce-b79c49ca13db)
 
 ---
 
@@ -117,6 +134,7 @@ Adicione ou edite a seguinte linha:
 ```bash
 dbpassword=password
 ```
+![Screenshot_23](https://github.com/user-attachments/assets/d3e8dc21-c726-4758-84f9-29e89a1634e7)
 
 Salve e saia (`CTRL + S`, `CTRL + X`, `ENTER`).
 
@@ -133,6 +151,7 @@ systemctl status zabbix-server
 ```
 
 ---
+![Screenshot_24](https://github.com/user-attachments/assets/14a6cc62-e886-417a-82b3-3ddd2994b41b)
 
 ## 10. Acessar a Interface Web do Zabbix
 
@@ -141,46 +160,45 @@ Abra seu navegador e acesse:
 ```
 http://host/zabbix
 ```
+![Screenshot_25](https://github.com/user-attachments/assets/4925e236-91d5-40ae-a768-b067a23c87dd)
 
 Substitua `host` pelo IP ou nome do seu servidor.
-
+```
+Coloque Idioma Português (pt_PT)
+```
 ---
+
+Nessa etapa verifique e se necessário faça ajuste para ficar igual na imagem e abaixo e na opção senha coloque mesma senha do zabbix'@'localhost' identified by 'password';
+
+![Screenshot_26](https://github.com/user-attachments/assets/3386081b-1c3a-41a9-88f4-fe70fe62dd60)
+
+
+Ajuste para fica igual a imagem abaixo:
+
+![Screenshot_27](https://github.com/user-attachments/assets/01b762ac-8fbd-4d8c-abd8-b91d4fb34eb0)
+
 
 ## Finalizado!
 
 Agora seu Zabbix está instalado e pronto para ser configurado! 🚀
 
 
+![Screenshot_28](https://github.com/user-attachments/assets/30b692f2-838e-49a0-94d2-e7ace2812ca3)
 
 
 
+![Screenshot_29](https://github.com/user-attachments/assets/ae47ef98-f718-4ac1-9599-f1785cf51323)
 
+**Credenciais padrão:**
 
+```
+Username: Admin
+Password: zabbix
+```
 
+## Finalizado!
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Agora seu Zabbix está instalado e pronto para ser configurado! 🚀
 
 # Instalação do Grafana 
 
@@ -210,6 +228,8 @@ apt install -y gnupg2 curl software-properties-common
 - **`curl`**: Permite baixar arquivos de servidores web.
 - **`software-properties-common`**: Fornece suporte a repositórios adicionais no Ubuntu.
 
+![Screenshot_30](https://github.com/user-attachments/assets/dee7000c-d038-4f5e-9a03-effe5251fb8a)
+
 ### Adicionar chave GPG do repositório Grafana:
 
 ```bash
@@ -219,6 +239,12 @@ curl -fsSL https://packages.grafana.com/gpg.key | sudo gpg --dearmor -o /etc/apt
 - **`curl -fsSL URL`**: Baixa a chave GPG do repositório oficial do Grafana.
 - **`gpg --dearmor`**: Converte a chave para um formato compatível com o APT.
 - **`-o /etc/apt/trusted.gpg.d/grafana.gpg`**: Armazena a chave no local correto.
+
+![Screenshot_31](https://github.com/user-attachments/assets/2d95fe6e-5dd2-4db0-9e83-3a70cbbe4abc)
+
+  
+![Screenshot_32](https://github.com/user-attachments/assets/64f2de2c-7658-4a95-8150-b294a29e87b8)
+
 
 ### Adicionar repositório do Grafana ao sistema:
 
